@@ -1,9 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
 import atcRecording from './assets/atc-trimmed.mp3'
 import lofiAudioOne from './assets/bento-box-love-letters.mp3'
+import KofiIcon from './assets/KofiIcon'
+import styles from './App.module.scss'
 
 function App() {
   const [atcVolume, setAtcVolume] = useState<number | null>(null)
+
+  // TODO: Remove once MVP is complete
+  const isFirstDraftVisible = false
 
   const atcRef = useRef<HTMLAudioElement>(null)
   const lofiSongOne = useRef<HTMLAudioElement>(null)
@@ -61,31 +66,46 @@ function App() {
     })
   }, [])
 
+  // TODO: Remove once MVP is complete
+  if (isFirstDraftVisible)
+    return (
+      <>
+        <div>
+          <button onClick={handlePlayAtc}>Play ATC</button>
+          <button onClick={handlePauseAtc}>Pause ATC</button>
+        </div>
+        <div>
+          <button onClick={handlePlayLofi}>Play Lofi</button>
+          <button onClick={handlePauseLofi}>Pause Lofi</button>
+        </div>
+        <div>
+          <p>Current volume: {atcVolume?.toFixed(1).toString()}</p>
+        </div>
+        <div>
+          <p>ATC Volume Controls</p>
+          <button onClick={increaseAtcVolume}>+</button>
+          <button onClick={decreaseAtcVolume}>-</button>
+        </div>
+        <input
+          type='range'
+          min='1'
+          max='100'
+          onChange={(e) => handleVolumeChange(e)}
+        ></input>
+      </>
+    )
+
   return (
-    <>
-      <div>
-        <button onClick={handlePlayAtc}>Play ATC</button>
-        <button onClick={handlePauseAtc}>Pause ATC</button>
-      </div>
-      <div>
-        <button onClick={handlePlayLofi}>Play Lofi</button>
-        <button onClick={handlePauseLofi}>Pause Lofi</button>
-      </div>
-      <div>
-        <p>Current volume: {atcVolume?.toFixed(1).toString()}</p>
-      </div>
-      <div>
-        <p>ATC Volume Controls</p>
-        <button onClick={increaseAtcVolume}>+</button>
-        <button onClick={decreaseAtcVolume}>-</button>
-      </div>
-      <input
-        type='range'
-        min='1'
-        max='100'
-        onChange={(e) => handleVolumeChange(e)}
-      ></input>
-    </>
+    <main>
+      <header className={styles.header}>
+        <h1>comfyatc.fm</h1>
+        <div className={styles.kofiButtonContainer}>
+          <button className={styles.kofiButton}>
+            <KofiIcon />
+          </button>
+        </div>
+      </header>
+    </main>
   )
 }
 
