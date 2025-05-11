@@ -1,14 +1,16 @@
 .header {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
   align-items: center;
   padding: 2rem 1.6rem 2.5rem 1.6rem;
 
   h1 {
+    grid-column: 2;
     color: #7b7b7b;
     font-family: 'Poppins', 'serif';
     font-size: 1.8rem;
     font-weight: bold;
-    margin-left: auto;
+    justify-self: center;
   }
 
   .kofiButtonContainer {
