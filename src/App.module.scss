@@ -4,13 +4,17 @@
   align-items: center;
   padding: 2rem 1.6rem 2.5rem 1.6rem;
 
-  h1 {
+  .homeLink {
     grid-column: 2;
-    color: #7b7b7b;
-    font-family: 'Poppins', 'serif';
-    font-size: 1.8rem;
-    font-weight: bold;
     justify-self: center;
+    text-decoration: none;
+
+    h1 {
+      color: #7b7b7b;
+      font-family: 'Poppins', 'serif';
+      font-size: 1.8rem;
+      font-weight: bold;
+    }
   }
 
   .kofiButtonContainer {

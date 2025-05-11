@@ -96,7 +96,12 @@ function App() {
   return (
     <>
       <header className={styles.header}>
-        <h1>comfyatc.fm</h1>
+        <a
+          className={styles.homeLink}
+          href='/'
+        >
+          <h1>comfyatc.fm</h1>
+        </a>
         <div className={styles.kofiButtonContainer}>
           <button className={styles.kofiButton}>
             <KofiIcon />
