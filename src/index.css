@@ -12,11 +12,9 @@ html {
 
 body {
   font-size: 1.6rem;
-  height: 100vh;
 }
 
 #root {
   display: flex;
   flex-direction: column;
-  height: 100%;
 }
