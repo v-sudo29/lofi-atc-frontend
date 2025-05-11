@@ -12,38 +12,6 @@
       font-size: 1.6rem;
       font-weight: 600;
     }
-
-    .volumeSliderComponent {
-      display: flex;
-      align-items: center;
-
-      gap: 1.2rem;
-
-      .volumeIconContainer {
-        display: flex;
-        align-items: center;
-      }
-
-      .volumeSlider {
-        -webkit-appearance: none; /* Override default CSS styles */
-        appearance: none;
-        accent-color: green;
-        border-radius: 0.8rem;
-        height: 1.8rem;
-        width: 15rem;
-        outline: none;
-      }
-
-      .volumeSlider::-webkit-slider-thumb {
-        width: 1.8rem;
-        -webkit-appearance: none;
-        appearance: none;
-        height: 1.8rem;
-        background-color: #ffffff;
-        border-radius: 100rem;
-        border: 0.3rem solid black;
-      }
-    }
   }
 
   .lofiDropdownSection {
