@@ -1,9 +1,15 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import VolumeIcon from '../assets/VolumeIcon'
 import styles from './MainWidget.module.scss'
+import MusicIcon from '../assets/MusicIcon'
+import DicesIcon from '../assets/DicesIcon'
+import ChevronDownIcon from '../assets/ChevronDownIcon'
 
 export const MainWidget = () => {
+  const [currentSong, setCurrentSong] = useState<string | null>(null)
+
   const volumeSlideRef = useRef<HTMLInputElement>(null)
+  const lofiDropdownRef = useRef<HTMLSelectElement>(null)
 
   const handleThumbLeftSpaceColoring = () => {
     if (volumeSlideRef.current) {
@@ -34,9 +40,26 @@ export const MainWidget = () => {
     }
   }
 
-  // on load, set volume slider left coloring
+  const setCustomDropdownSong = () => {
+    if (lofiDropdownRef.current) setCurrentSong(lofiDropdownRef.current.value)
+  }
+
+  /**
+   * On load - set volume slider left coloring
+   */
   useEffect(() => {
     if (volumeSlideRef.current) handleThumbLeftSpaceColoring()
+  }, [])
+
+  /**
+   * On load - set current song
+   */
+  useEffect(() => {
+    if (
+      lofiDropdownRef.current &&
+      currentSong !== lofiDropdownRef.current.value
+    )
+      setCustomDropdownSong()
   }, [])
 
   return (
@@ -58,6 +81,29 @@ export const MainWidget = () => {
               onChange={handleThumbLeftSpaceColoring}
             ></input>
           </div>
+        </div>
+        <div className={styles.lofiDropdownSection}>
+          <div className={styles.lofiDropdownContainer}>
+            <select
+              ref={lofiDropdownRef}
+              className={styles.lofiBeatsDropdown}
+              name='lofi-beats-dropdown'
+              id='lofi-beats-dropdown'
+            >
+              <option value='bento box love letters'>
+                bento box love letters
+              </option>
+              <option value='Song title'>Song title</option>
+            </select>
+            <div className={styles.lofiCustomSelect}>
+              <MusicIcon />
+              {currentSong}
+              <ChevronDownIcon className={styles.chevronDownIcon} />
+            </div>
+          </div>
+          <button className={styles.dicesButton}>
+            <DicesIcon />
+          </button>
         </div>
       </div>
     </div>
