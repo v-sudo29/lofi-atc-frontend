@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import atcRecording from './assets/atc-trimmed.mp3'
 import lofiAudioOne from './assets/bento-box-love-letters.mp3'
 import KofiIcon from './assets/KofiIcon'
+import { MainWidget } from './components/MainWidget'
 import styles from './App.module.scss'
 
 function App() {
@@ -58,12 +59,8 @@ function App() {
 
   // event listener to listen for when current song ends
   useEffect(() => {
-    atcRef.current?.addEventListener('ended', () => {
-      console.log('atc has ended')
-
-      // play next song
-      handlePlayAtc()
-    })
+    atcRef.current?.addEventListener('ended', handlePlayAtc)
+    return () => atcRef.current?.removeEventListener('end', handlePlayAtc)
   }, [])
 
   // TODO: Remove once MVP is complete
@@ -96,7 +93,7 @@ function App() {
     )
 
   return (
-    <main>
+    <>
       <header className={styles.header}>
         <h1>comfyatc.fm</h1>
         <div className={styles.kofiButtonContainer}>
@@ -105,7 +102,10 @@ function App() {
           </button>
         </div>
       </header>
-    </main>
+      <main className={styles.main}>
+        <MainWidget />
+      </main>
+    </>
   )
 }
 

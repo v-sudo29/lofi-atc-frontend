@@ -1,0 +1,48 @@
+.mainWidget {
+  background-color: #ffffff;
+  border-radius: 2.4rem;
+  padding: 2.4rem 1.6rem;
+
+  .lofiBeatsSection {
+    .lofiBeatsHeader {
+      display: flex;
+      justify-content: space-between;
+
+      h2 {
+        font-family: 'Poppins', 'serif';
+        font-size: 1.6rem;
+        font-weight: 600;
+      }
+
+      .volumeSliderComponent {
+        display: flex;
+        align-items: center;
+
+        gap: 1.2rem;
+
+        .volumeIconContainer {
+          display: flex;
+          align-items: center;
+        }
+
+        .volumeSlider {
+          -webkit-appearance: none; /* Override default CSS styles */
+          accent-color: green;
+          border-radius: 0.8rem;
+          height: 1.8rem;
+          width: 15rem;
+          outline: none;
+        }
+
+        .volumeSlider::-webkit-slider-thumb {
+          width: 18px;
+          -webkit-appearance: none;
+          height: 18px;
+          background-color: #ffffff;
+          border-radius: 100rem;
+          border: 0.3rem solid black;
+        }
+      }
+    }
+  }
+}
