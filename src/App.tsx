@@ -3,6 +3,7 @@ import atcRecording from './assets/atc-trimmed.mp3'
 import lofiAudioOne from './assets/bento-box-love-letters.mp3'
 import KofiIcon from './assets/KofiIcon'
 import { MainWidget } from './components/MainWidget'
+import LightDarkModeToggle from './components/LightDarkModeToggle'
 import styles from './App.module.scss'
 
 function App() {
@@ -104,6 +105,7 @@ function App() {
       </header>
       <main className={styles.main}>
         <MainWidget />
+        <LightDarkModeToggle />
       </main>
     </>
   )
