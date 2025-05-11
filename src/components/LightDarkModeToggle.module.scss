@@ -1,5 +1,4 @@
 .toggleContainer {
-  background-color: #ffffff;
   border-radius: 10rem;
   display: flex;
   gap: 0.8rem;
@@ -8,13 +7,43 @@
 
   .lightModeButton,
   .darkModeButton {
+    background-color: transparent;
     border: none;
     border-radius: 10rem;
     display: flex;
     padding: 0.8rem;
+    cursor: pointer;
+    transition: background-color 0.2s ease-out;
   }
 
-  .darkModeButton {
-    background-color: transparent;
+  .lightButtonLightActive {
+    background-color: #e6e6e6;
   }
+
+  .lightButtonDarkActive {
+    svg {
+      path {
+        stroke: #8d8d8d;
+      }
+    }
+  }
+
+  .darkButtonDarkActive {
+    background-color: #595959;
+    color: #ffffff;
+
+    svg {
+      path {
+        stroke: #ffffff;
+      }
+    }
+  }
+}
+
+.containerLightMode {
+  background-color: #ffffff;
+}
+
+.containerDarkMode {
+  background-color: #303030;
 }

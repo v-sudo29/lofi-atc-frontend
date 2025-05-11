@@ -2,12 +2,16 @@ import { useEffect, useRef, useState } from 'react'
 import { KofiIcon } from './assets/KofiIcon'
 import { MainWidget } from './components/MainWidget'
 import { LightDarkModeToggle } from './components/LightDarkModeToggle'
+import { useLightDarkMode } from './hooks/useLightDarkMode'
+import { MODE } from './constants/LightDarkMode'
 import atcRecording from './assets/atc-trimmed.mp3'
 import lofiAudioOne from './assets/bento-box-love-letters.mp3'
+import clsx from 'clsx'
 import styles from './App.module.scss'
 
 function App() {
   const [atcVolume, setAtcVolume] = useState<number | null>(null)
+  const { mode } = useLightDarkMode()
 
   // TODO: Remove once MVP is complete
   const isFirstDraftVisible = false
@@ -94,16 +98,33 @@ function App() {
     )
 
   return (
-    <>
+    <div
+      className={clsx(styles.layout, {
+        [styles.layoutLightMode]: mode === MODE.LIGHT,
+        [styles.layoutDarkMode]: mode === MODE.DARK,
+      })}
+    >
       <header className={styles.header}>
         <a
           className={styles.homeLink}
           href='/'
         >
-          <h1>comfyatc.fm</h1>
+          <h1
+            className={clsx({
+              [styles.titleLightMode]: mode === MODE.LIGHT,
+              [styles.titleDarkMode]: mode === MODE.DARK,
+            })}
+          >
+            comfyatc.fm
+          </h1>
         </a>
         <div className={styles.kofiButtonContainer}>
-          <button className={styles.kofiButton}>
+          <button
+            className={clsx(styles.kofiButton, {
+              [styles.kofiButtonLightMode]: mode === MODE.LIGHT,
+              [styles.kofiButtonDarkMode]: mode === MODE.DARK,
+            })}
+          >
             <KofiIcon />
           </button>
         </div>
@@ -112,7 +133,7 @@ function App() {
         <MainWidget />
         <LightDarkModeToggle />
       </main>
-    </>
+    </div>
   )
 }
 
