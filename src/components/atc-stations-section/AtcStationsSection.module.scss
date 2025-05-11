@@ -1,10 +1,38 @@
 .section {
   display: flex;
-  justify-content: space-between;
+  gap: 1.6rem;
+  flex-direction: column;
 
-  h2 {
-    font-family: 'Poppins', 'serif';
-    font-size: 1.6rem;
-    font-weight: 600;
+  .header {
+    display: flex;
+    justify-content: space-between;
+
+    h2 {
+      font-family: 'Poppins', 'serif';
+      font-size: 1.6rem;
+      font-weight: 600;
+    }
+  }
+
+  .stationButtonsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(7.3rem, 1fr));
+    gap: 1.4rem;
+    justify-content: space-between;
+
+    .stationButton {
+      background-color: #fafafa;
+      border: 1.5px solid #eaebef;
+      border-radius: 0.8rem;
+      min-height: 0;
+      min-height: 7.3rem;
+      font-family: 'Space Mono', 'monospace';
+      font-size: 1.3rem;
+    }
+
+    .activeButton {
+      border: 1.5px solid #000000;
+      font-weight: 700;
+    }
   }
 }
