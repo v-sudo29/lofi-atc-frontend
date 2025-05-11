@@ -1,4 +1,4 @@
-const ChevronDownIcon = ({ className }: { className?: string }) => {
+export const ChevronDownIcon = ({ className }: { className?: string }) => {
   return (
     <svg
       className={className}
@@ -18,5 +18,3 @@ const ChevronDownIcon = ({ className }: { className?: string }) => {
     </svg>
   )
 }
-
-export default ChevronDownIcon

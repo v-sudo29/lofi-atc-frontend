@@ -1,4 +1,4 @@
-import PlayIcon from '../../assets/PlayIcon'
+import { PlayIcon } from '../../assets/PlayIcon'
 import styles from './PlayButton.module.scss'
 
 const PlayButton = () => {

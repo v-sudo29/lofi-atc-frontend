@@ -1,8 +1,8 @@
 import { useEffect, useRef } from 'react'
-import VolumeIcon from '../../assets/VolumeIcon'
+import { VolumeIcon } from '../../assets/VolumeIcon'
 import styles from './VolumeSlider.module.scss'
 
-const VolumeSlider = () => {
+export const VolumeSlider = () => {
   const volumeSlideRef = useRef<HTMLInputElement>(null)
   const handleThumbLeftSpaceColoring = () => {
     if (volumeSlideRef.current) {
@@ -56,5 +56,3 @@ const VolumeSlider = () => {
     </div>
   )
 }
-
-export default VolumeSlider

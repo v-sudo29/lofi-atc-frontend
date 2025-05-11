@@ -1,4 +1,4 @@
-const MoonIcon = () => {
+export const MoonIcon = () => {
   return (
     <svg
       width='20'
@@ -17,5 +17,3 @@ const MoonIcon = () => {
     </svg>
   )
 }
-
-export default MoonIcon

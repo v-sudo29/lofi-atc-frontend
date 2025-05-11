@@ -1,4 +1,4 @@
-const SunIcon = () => {
+export const SunIcon = () => {
   return (
     <svg
       width='22'
@@ -17,5 +17,3 @@ const SunIcon = () => {
     </svg>
   )
 }
-
-export default SunIcon

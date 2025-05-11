@@ -1,4 +1,4 @@
-const KofiIcon = () => {
+export const KofiIcon = () => {
   return (
     <svg
       width='241'
@@ -50,5 +50,3 @@ const KofiIcon = () => {
     </svg>
   )
 }
-
-export default KofiIcon

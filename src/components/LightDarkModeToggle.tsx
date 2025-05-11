@@ -1,8 +1,8 @@
-import SunIcon from '../assets/SunIcon'
-import MoonIcon from '../assets/MoonIcon'
+import { SunIcon } from '../assets/SunIcon'
+import { MoonIcon } from '../assets/MoonIcon'
 import styles from './LightDarkModeToggle.module.scss'
 
-const LightDarkModeToggle = () => {
+export const LightDarkModeToggle = () => {
   return (
     <div className={styles.toggleContainer}>
       <button className={styles.lightModeButton}>
@@ -14,5 +14,3 @@ const LightDarkModeToggle = () => {
     </div>
   )
 }
-
-export default LightDarkModeToggle

@@ -1,4 +1,4 @@
-const PlayIcon = () => {
+export const PlayIcon = () => {
   return (
     <svg
       width='24'
@@ -18,5 +18,3 @@ const PlayIcon = () => {
     </svg>
   )
 }
-
-export default PlayIcon

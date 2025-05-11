@@ -1,4 +1,4 @@
-const VolumeIcon = () => {
+export const VolumeIcon = () => {
   return (
     <svg
       width='18'
@@ -17,5 +17,3 @@ const VolumeIcon = () => {
     </svg>
   )
 }
-
-export default VolumeIcon

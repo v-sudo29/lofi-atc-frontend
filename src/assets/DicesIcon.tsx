@@ -1,4 +1,4 @@
-const DicesIcon = () => {
+export const DicesIcon = () => {
   return (
     <svg
       width='20'
@@ -17,5 +17,3 @@ const DicesIcon = () => {
     </svg>
   )
 }
-
-export default DicesIcon

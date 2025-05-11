@@ -1,11 +1,11 @@
 import { useEffect, useRef, useState } from 'react'
-import MusicIcon from '../../assets/MusicIcon'
-import ChevronDownIcon from '../../assets/ChevronDownIcon'
-import DicesIcon from '../../assets/DicesIcon'
-import VolumeSlider from '../components/VolumeSlider'
+import { MusicIcon } from '../../assets/MusicIcon'
+import { ChevronDownIcon } from '../../assets/ChevronDownIcon'
+import { DicesIcon } from '../../assets/DicesIcon'
+import { VolumeSlider } from '../components/VolumeSlider'
 import styles from './LofiBeatsSection.module.scss'
 
-const LofiBeatsSection = () => {
+export const LofiBeatsSection = () => {
   const [currentSong, setCurrentSong] = useState<string | null>(null)
 
   const lofiDropdownRef = useRef<HTMLSelectElement>(null)
@@ -57,5 +57,3 @@ const LofiBeatsSection = () => {
     </div>
   )
 }
-
-export default LofiBeatsSection

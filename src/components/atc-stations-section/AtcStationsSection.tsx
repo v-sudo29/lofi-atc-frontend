@@ -1,7 +1,7 @@
-import VolumeSlider from '../components/VolumeSlider'
+import { VolumeSlider } from '../components/VolumeSlider'
 import styles from './AtcStationsSection.module.scss'
 
-const AtcStationsSection = () => {
+export const AtcStationsSection = () => {
   const stationsData = [
     { name: 'BOS ', isActive: true },
     { name: 'BOS ', isActive: false },
