@@ -38,8 +38,19 @@
       font-size: 1.3rem;
     }
 
-    .activeButton {
+    .stationButtonDarkMode {
+      background-color: #303030;
+      border: 1px solid #4f4f4f;
+      color: #ffffff;
+    }
+
+    .activeButtonLightMode {
       border: 1.5px solid #000000;
+      font-weight: 700;
+    }
+
+    .activeButtonDarkMode {
+      border: 1.5px solid #ffffff;
       font-weight: 700;
     }
   }

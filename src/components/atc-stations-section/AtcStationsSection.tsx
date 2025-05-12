@@ -43,9 +43,13 @@ export const AtcStationsSection = () => {
         {stationsData.map((station, i) => (
           <button
             key={`${station.name}-${i}`}
-            className={`${styles.stationButton} ${
-              station.isActive && styles.activeButton
-            }`}
+            className={clsx(styles.stationButton, {
+              [styles.stationButtonDarkMode]: mode === MODE.DARK,
+              [styles.activeButtonLightMode]:
+                station.isActive && mode === MODE.LIGHT,
+              [styles.activeButtonDarkMode]:
+                station.isActive && mode === MODE.DARK,
+            })}
           >
             {station.name}
           </button>
