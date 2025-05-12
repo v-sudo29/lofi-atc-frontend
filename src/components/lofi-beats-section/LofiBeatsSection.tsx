@@ -55,13 +55,21 @@ export const LofiBeatsSection = () => {
             </option>
             <option value='Song title'>Song title</option>
           </select>
-          <div className={styles.lofiCustomSelect}>
-            <MusicIcon />
+          <div
+            className={clsx(styles.lofiCustomSelect, {
+              [styles.lofiCustomSelectDarkMode]: mode === MODE.DARK,
+            })}
+          >
+            <MusicIcon className={styles.musicIcon} />
             {currentSong}
             <ChevronDownIcon className={styles.chevronDownIcon} />
           </div>
         </div>
-        <button className={styles.dicesButton}>
+        <button
+          className={clsx(styles.dicesButton, {
+            [styles.dicesButtonDarkMode]: mode === MODE.DARK,
+          })}
+        >
           <DicesIcon />
         </button>
       </div>

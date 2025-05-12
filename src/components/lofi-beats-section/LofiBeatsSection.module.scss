@@ -46,9 +46,27 @@
         padding: 0.95rem 1rem;
         font-family: 'Space Mono', 'monospace';
         font-size: 1.3rem;
+        transition: background-color 0.2s ease-out;
 
         .chevronDownIcon {
           margin-left: auto;
+        }
+      }
+
+      .lofiCustomSelectDarkMode {
+        background-color: #303030;
+        color: #eaebef;
+
+        .musicIcon {
+          path {
+            stroke: #eaebef;
+          }
+        }
+
+        .chevronDownIcon {
+          path {
+            stroke: #ffffff;
+          }
         }
       }
     }
@@ -58,6 +76,18 @@
       border: 1px solid #eaebef;
       border-radius: 0.8rem;
       min-width: 4rem;
+      transition: background-color 0.2s ease-out;
+    }
+
+    .dicesButtonDarkMode {
+      background-color: #303030;
+      border: 1px solid #4f4f4f;
+
+      svg {
+        path {
+          stroke: #ffffff;
+        }
+      }
     }
   }
 }

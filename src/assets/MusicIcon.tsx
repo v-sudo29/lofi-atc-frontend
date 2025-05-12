@@ -1,6 +1,7 @@
-export const MusicIcon = () => {
+export const MusicIcon = ({ className }: { className: string }) => {
   return (
     <svg
+      className={className}
       width='12'
       height='12'
       viewBox='0 0 12 12'
