@@ -1,11 +1,19 @@
 import { useEffect, useRef } from 'react'
 import { VolumeIcon } from '../../assets/VolumeIcon'
+import { useLightDarkMode } from '../../hooks/useLightDarkMode'
+import { MODE } from '../../constants/LightDarkMode'
 import styles from './VolumeSlider.module.scss'
+import clsx from 'clsx'
 
 export const VolumeSlider = () => {
+  const { mode } = useLightDarkMode()
   const volumeSlideRef = useRef<HTMLInputElement>(null)
+
   const handleThumbLeftSpaceColoring = () => {
     if (volumeSlideRef.current) {
+      const modeLeftColor = mode === MODE.LIGHT ? 'black' : '#e4e4e4'
+      const modeRightColor = mode === MODE.LIGHT ? '#e6e6e6' : '#4f4f4f'
+
       const slider = volumeSlideRef.current
       const min = Number(slider.min)
       const max = Number(slider.max)
@@ -29,7 +37,7 @@ export const VolumeSlider = () => {
         adjustedPercent = Math.min(percent - 4.5, 100)
       else if (value >= 90 && value <= 100)
         adjustedPercent = Math.min(percent - 5.7, 100)
-      slider.style.background = `linear-gradient(to right, black 0%, black ${adjustedPercent}%, #e6e6e6 ${adjustedPercent}%, #e6e6e6 100%)`
+      slider.style.background = `linear-gradient(to right, ${modeLeftColor} 0%, ${modeLeftColor} ${adjustedPercent}%, ${modeRightColor} ${adjustedPercent}%, ${modeRightColor} 100%)`
     }
   }
 
@@ -38,16 +46,23 @@ export const VolumeSlider = () => {
    */
   useEffect(() => {
     if (volumeSlideRef.current) handleThumbLeftSpaceColoring()
-  }, [])
+  }, [mode])
 
   return (
     <div className={styles.volumeSlider}>
-      <div className={styles.volumeIconContainer}>
+      <div
+        className={clsx(styles.volumeIconContainer, {
+          [styles.volumeIconContainerLightMode]: mode === MODE.LIGHT,
+          [styles.volumeIconContainerDarkMode]: mode === MODE.DARK,
+        })}
+      >
         <VolumeIcon />
       </div>
       <input
         ref={volumeSlideRef}
-        className={styles.volumeSlider}
+        className={clsx(styles.volumeSlider, {
+          [styles.volumeSliderDarkMode]: mode === MODE.DARK,
+        })}
         type='range'
         min='1'
         max='100'

@@ -2,9 +2,17 @@
   display: flex;
   flex-direction: column;
   gap: 4rem;
-  background-color: #ffffff;
   border-radius: 2.4rem;
   padding: 2.4rem 1.6rem;
   width: 100%;
   max-width: 79rem;
+  transition: background-color 0.2s ease-out;
+}
+
+.mainWidgetLightMode {
+  background-color: #ffffff;
+}
+
+.mainWidgetDarkMode {
+  background-color: #373737;
 }

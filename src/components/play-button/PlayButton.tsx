@@ -1,7 +1,7 @@
 import { PlayIcon } from '../../assets/PlayIcon'
 import styles from './PlayButton.module.scss'
 
-const PlayButton = () => {
+export const PlayButton = () => {
   return (
     <button className={styles.button}>
       <PlayIcon />
@@ -9,5 +9,3 @@ const PlayButton = () => {
     </button>
   )
 }
-
-export default PlayButton

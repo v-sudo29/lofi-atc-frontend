@@ -3,10 +3,14 @@ import { MusicIcon } from '../../assets/MusicIcon'
 import { ChevronDownIcon } from '../../assets/ChevronDownIcon'
 import { DicesIcon } from '../../assets/DicesIcon'
 import { VolumeSlider } from '../components/VolumeSlider'
+import { useLightDarkMode } from '../../hooks/useLightDarkMode'
+import { MODE } from '../../constants/LightDarkMode'
 import styles from './LofiBeatsSection.module.scss'
+import clsx from 'clsx'
 
 export const LofiBeatsSection = () => {
   const [currentSong, setCurrentSong] = useState<string | null>(null)
+  const { mode } = useLightDarkMode()
 
   const lofiDropdownRef = useRef<HTMLSelectElement>(null)
 
@@ -28,7 +32,14 @@ export const LofiBeatsSection = () => {
   return (
     <div className={styles.lofiBeatsSection}>
       <div className={styles.lofiBeatsHeader}>
-        <h2>Lofi Beats</h2>
+        <h2
+          className={clsx({
+            [styles.lofiBeatsTitleLightMode]: mode === MODE.LIGHT,
+            [styles.lofiBeatsTitleDarkMode]: mode === MODE.DARK,
+          })}
+        >
+          Lofi Beats
+        </h2>
         <VolumeSlider />
       </div>
       <div className={styles.lofiDropdownSection}>

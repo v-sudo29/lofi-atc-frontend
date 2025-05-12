@@ -7,12 +7,25 @@
   .volumeIconContainer {
     display: flex;
     align-items: center;
+
+    svg {
+      path {
+        transition: stroke 0.2s ease-out;
+      }
+    }
+  }
+
+  .volumeIconContainerDarkMode {
+    svg {
+      path {
+        stroke: #ffffff;
+      }
+    }
   }
 
   .volumeSlider {
     -webkit-appearance: none; /* Override default CSS styles */
     appearance: none;
-    accent-color: green;
     border-radius: 0.8rem;
     height: 1.8rem;
     width: 15rem;
@@ -27,5 +40,10 @@
     background-color: #ffffff;
     border-radius: 100rem;
     border: 0.3rem solid black;
+  }
+
+  .volumeSliderDarkMode::-webkit-slider-thumb {
+    border: 0.4rem solid #e4e4e4;
+    background-color: #373737;
   }
 }
