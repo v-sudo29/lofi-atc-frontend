@@ -1,4 +1,3 @@
-import { useEffect, useRef, useState } from 'react'
 import { MusicIcon } from '../../assets/MusicIcon'
 import { ChevronDownIcon } from '../../assets/ChevronDownIcon'
 import { DicesIcon } from '../../assets/DicesIcon'
@@ -7,27 +6,52 @@ import { useLightDarkMode } from '../../hooks/useLightDarkMode'
 import { MODE } from '../../constants/LightDarkMode'
 import styles from './LofiBeatsSection.module.scss'
 import clsx from 'clsx'
+import { useEffect, useRef, useState } from 'react'
 
-export const LofiBeatsSection = () => {
-  const [currentSong, setCurrentSong] = useState<string | null>(null)
+const fakeSongTitles = [
+  { name: 'Song title' },
+  { name: 'Song title' },
+  { name: 'Song title' },
+  { name: 'Song title' },
+  { name: 'Song title' },
+  { name: 'Song title' },
+  { name: 'Song title' },
+  { name: 'Song title' },
+]
+
+export const LofiBeatsSection = ({
+  currentSong,
+  lofiDropdownRef,
+}: {
+  currentSong: string | null
+  lofiDropdownRef?: React.RefObject<HTMLSelectElement | null>
+}) => {
+  const [isOptionsDisplayed, setIsOptionsDisplayed] = useState(false)
+  const [customSelectWidth, setCustomSelectWidth] = useState<number | null>(
+    null
+  )
   const { mode } = useLightDarkMode()
+  const customSelectRef = useRef<HTMLDivElement>(null)
 
-  const lofiDropdownRef = useRef<HTMLSelectElement>(null)
-
-  const setCustomDropdownSong = () => {
-    if (lofiDropdownRef.current) setCurrentSong(lofiDropdownRef.current.value)
+  const handleCustomSelectClick = () => {
+    handleCustomOptionsContainerResize()
+    setIsOptionsDisplayed(!isOptionsDisplayed)
   }
 
-  /**
-   * On load - set current song
-   */
+  const handleCustomOptionsContainerResize = () => {
+    if (customSelectRef.current) {
+      setCustomSelectWidth(customSelectRef.current.offsetWidth)
+    }
+  }
+
   useEffect(() => {
-    if (
-      lofiDropdownRef.current &&
-      currentSong !== lofiDropdownRef.current.value
-    )
-      setCustomDropdownSong()
-  }, [currentSong])
+    if (customSelectRef.current) {
+      window.addEventListener('resize', handleCustomOptionsContainerResize)
+
+      return () =>
+        window.removeEventListener('resize', handleCustomOptionsContainerResize)
+    }
+  }, [])
 
   return (
     <div className={styles.lofiBeatsSection}>
@@ -56,14 +80,37 @@ export const LofiBeatsSection = () => {
             <option value='Song title'>Song title</option>
           </select>
           <div
+            ref={customSelectRef}
             className={clsx(styles.lofiCustomSelect, {
               [styles.lofiCustomSelectDarkMode]: mode === MODE.DARK,
             })}
+            onClick={handleCustomSelectClick}
           >
             <MusicIcon className={styles.musicIcon} />
             {currentSong}
             <ChevronDownIcon className={styles.chevronDownIcon} />
           </div>
+          {isOptionsDisplayed && (
+            <div
+              className={styles.lofiOptionsContainer}
+              style={
+                customSelectWidth
+                  ? { width: `${customSelectWidth}px` }
+                  : undefined
+              }
+            >
+              {fakeSongTitles.map((song, i) => {
+                return (
+                  <div
+                    key={`${song.name}-${i}`}
+                    className={styles.songOption}
+                  >
+                    {song.name}
+                  </div>
+                )
+              })}
+            </div>
+          )}
         </div>
         <button
           className={clsx(styles.dicesButton, {
