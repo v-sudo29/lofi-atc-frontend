@@ -32,15 +32,28 @@ export const LofiBeatsSection = ({
   )
   const { mode } = useLightDarkMode()
   const customSelectRef = useRef<HTMLDivElement>(null)
+  const customOptionsContainerRef = useRef<HTMLDivElement>(null)
 
   const handleCustomSelectClick = () => {
-    handleCustomOptionsContainerResize()
-    setIsOptionsDisplayed(!isOptionsDisplayed)
+    if (!isOptionsDisplayed) {
+      setIsOptionsDisplayed(true)
+      handleCustomOptionsContainerResize()
+    } else setIsOptionsDisplayed(false)
   }
 
   const handleCustomOptionsContainerResize = () => {
     if (customSelectRef.current) {
       setCustomSelectWidth(customSelectRef.current.offsetWidth)
+    }
+  }
+
+  const handleOutsideOptionsContainerClick = (
+    e: React.FocusEvent<HTMLDivElement, Element>
+  ) => {
+    const element = e.target as HTMLElement
+
+    if (isOptionsDisplayed && element && customOptionsContainerRef.current) {
+      setIsOptionsDisplayed(false)
     }
   }
 
@@ -52,6 +65,12 @@ export const LofiBeatsSection = ({
         window.removeEventListener('resize', handleCustomOptionsContainerResize)
     }
   }, [])
+
+  useEffect(() => {
+    if (isOptionsDisplayed && customOptionsContainerRef.current) {
+      customOptionsContainerRef.current.focus()
+    }
+  }, [isOptionsDisplayed])
 
   return (
     <div className={styles.lofiBeatsSection}>
@@ -92,12 +111,15 @@ export const LofiBeatsSection = ({
           </div>
           {isOptionsDisplayed && (
             <div
+              ref={customOptionsContainerRef}
               className={styles.lofiOptionsContainer}
               style={
                 customSelectWidth
                   ? { width: `${customSelectWidth}px` }
                   : undefined
               }
+              onBlur={handleOutsideOptionsContainerClick}
+              tabIndex={0}
             >
               {fakeSongTitles.map((song, i) => {
                 return (
