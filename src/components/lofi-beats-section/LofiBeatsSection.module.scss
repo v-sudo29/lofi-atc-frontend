@@ -80,12 +80,18 @@
         flex-direction: column;
         gap: 0.8rem;
         padding: 1rem;
+        transition: background-color 0.2s ease-out;
 
         .songOption {
           font-family: 'Space Mono', 'monospace';
           font-size: 1.3rem;
           padding: 0.6rem 1rem;
         }
+      }
+
+      .lofiOptionsContainerDarkMode {
+        background-color: #303030;
+        color: #eaebef;
       }
     }
 
