@@ -112,7 +112,9 @@ export const LofiBeatsSection = ({
           {isOptionsDisplayed && (
             <div
               ref={customOptionsContainerRef}
-              className={styles.lofiOptionsContainer}
+              className={clsx(styles.lofiOptionsContainer, {
+                [styles.lofiOptionsContainerDarkMode]: mode === MODE.DARK,
+              })}
               style={
                 customSelectWidth
                   ? { width: `${customSelectWidth}px` }
