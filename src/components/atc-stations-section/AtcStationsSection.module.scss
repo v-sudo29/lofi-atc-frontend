@@ -30,12 +30,17 @@
 
     .stationButton {
       background-color: #fafafa;
-      border: 1.5px solid #eaebef;
+      border: 1px solid #eaebef;
       border-radius: 0.8rem;
       min-height: 0;
       min-height: 7.3rem;
       font-family: 'Space Mono', 'monospace';
       font-size: 1.3rem;
+      transition: border 0.2s ease-out;
+    }
+
+    .stationButton:hover {
+      border: 1px solid #b3b2b2;
     }
 
     .stationButtonDarkMode {
@@ -44,12 +49,14 @@
       color: #ffffff;
     }
 
-    .activeButtonLightMode {
+    .activeButtonLightMode,
+    .activeButtonLightMode:hover {
       border: 1.5px solid #000000;
       font-weight: 700;
     }
 
-    .activeButtonDarkMode {
+    .activeButtonDarkMode,
+    .activeButtonDarkMode:hover {
       border: 1.5px solid #ffffff;
       font-weight: 700;
     }

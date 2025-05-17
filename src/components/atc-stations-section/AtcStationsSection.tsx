@@ -1,30 +1,22 @@
 import { VolumeSlider } from '../components/VolumeSlider'
 import { useLightDarkMode } from '../../hooks/useLightDarkMode'
 import { MODE } from '../../constants/LightDarkMode'
+import { AudioData } from '../MainWidget'
 import styles from './AtcStationsSection.module.scss'
 import clsx from 'clsx'
 
-export const AtcStationsSection = () => {
+export const AtcStationsSection = ({
+  handleAtcVolumeUpdate,
+  handleAtcOptionClick,
+  atcAudioData,
+  currentAtc,
+}: {
+  handleAtcVolumeUpdate: (e: React.ChangeEvent<HTMLInputElement>) => void
+  handleAtcOptionClick: (atcStation: AudioData) => void
+  atcAudioData: AudioData[]
+  currentAtc: AudioData
+}) => {
   const { mode } = useLightDarkMode()
-
-  const stationsData = [
-    { name: 'BOS ', isActive: true },
-    { name: 'BOS ', isActive: false },
-    { name: 'BOS ', isActive: false },
-    { name: 'BOS ', isActive: false },
-    { name: 'BOS ', isActive: false },
-    { name: 'BOS ', isActive: false },
-    { name: 'BOS ', isActive: false },
-    { name: 'BOS ', isActive: false },
-    { name: 'BOS ', isActive: false },
-    { name: 'BOS ', isActive: false },
-    { name: 'BOS ', isActive: false },
-    { name: 'BOS ', isActive: false },
-    { name: 'BOS ', isActive: false },
-    { name: 'BOS ', isActive: false },
-    { name: 'BOS ', isActive: false },
-    { name: 'BOS ', isActive: false },
-  ]
 
   return (
     <div className={styles.section}>
@@ -37,19 +29,23 @@ export const AtcStationsSection = () => {
         >
           ATC Stations
         </h2>
-        <VolumeSlider />
+        <VolumeSlider
+          handleVolumeUpdate={handleAtcVolumeUpdate}
+          defaultVolumeValue={currentAtc.audio.volume * 100}
+        />
       </div>
       <div className={styles.stationButtonsContainer}>
-        {stationsData.map((station, i) => (
+        {atcAudioData.map((station, i) => (
           <button
             key={`${station.name}-${i}`}
             className={clsx(styles.stationButton, {
               [styles.stationButtonDarkMode]: mode === MODE.DARK,
               [styles.activeButtonLightMode]:
-                station.isActive && mode === MODE.LIGHT,
+                station.name === currentAtc.name && mode === MODE.LIGHT,
               [styles.activeButtonDarkMode]:
-                station.isActive && mode === MODE.DARK,
+                station.name === currentAtc.name && mode === MODE.DARK,
             })}
+            onClick={() => handleAtcOptionClick(station)}
           >
             {station.name}
           </button>
