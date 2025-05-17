@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { AtcStationsSection } from './atc-stations-section/AtcStationsSection'
 import { LofiBeatsSection } from './lofi-beats-section/LofiBeatsSection'
 import { PlayButton } from './play-button/PlayButton'
@@ -112,6 +112,31 @@ export const MainWidget = () => {
     )
     setCurrentSong(lofiSongsData[randomIndex])
   }
+
+  const handlePlayNextSong = () => {
+    let nextSongIndex = 0
+    const lastIndex = lofiSongsData.length - 1
+
+    lofiSongsData.find((song, i) => {
+      if (song === currentSong && i !== lastIndex) {
+        nextSongIndex = i + 1
+      }
+      if (song === currentSong && i === lastIndex) {
+        nextSongIndex = 0
+      }
+    })
+    lofiSongsData[nextSongIndex].audio.play()
+    setCurrentSong(lofiSongsData[nextSongIndex])
+  }
+
+  // Event listener for when current song ends
+  useEffect(() => {
+    if (currentSong) {
+      currentSong.audio.addEventListener('ended', handlePlayNextSong)
+      return () =>
+        currentSong.audio.removeEventListener('end', handlePlayNextSong)
+    }
+  }, [currentSong])
 
   return (
     <div
