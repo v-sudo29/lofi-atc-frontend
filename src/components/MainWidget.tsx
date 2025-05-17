@@ -110,6 +110,12 @@ export const MainWidget = () => {
     const randomIndex = Math.round(
       Number(Math.random()) * (lofiSongsData.length - 1)
     )
+
+    if (isAudioPlaying) {
+      handlePauseLofi()
+      lofiSongsData[randomIndex].audio.currentTime = 0
+      lofiSongsData[randomIndex].audio.play()
+    }
     setCurrentSong(lofiSongsData[randomIndex])
   }
 
