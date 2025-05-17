@@ -155,7 +155,6 @@ export const MainWidget = () => {
   useEffect(() => {
     if (currentSong) {
       currentSong.audio.addEventListener('ended', handlePlayNextSong)
-
       return () =>
         currentSong.audio.removeEventListener('end', handlePlayNextSong)
     }
@@ -165,7 +164,6 @@ export const MainWidget = () => {
   useEffect(() => {
     if (currentAtc) {
       currentAtc.audio.addEventListener('ended', handlePlayNextAtc)
-
       return () => currentAtc.audio.addEventListener('ended', handlePlayNextAtc)
     }
   }, [currentAtc])

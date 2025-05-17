@@ -2,20 +2,21 @@ import { useEffect, useRef, useState } from 'react'
 import { VolumeIcon } from '../../assets/VolumeIcon'
 import { useLightDarkMode } from '../../hooks/useLightDarkMode'
 import { MODE } from '../../constants/LightDarkMode'
+import { MutedVolumeIcon } from '../../assets/MutedVolumeIcon'
+import { AudioData } from '../MainWidget'
 import styles from './VolumeSlider.module.scss'
 import clsx from 'clsx'
-import { MutedVolumeIcon } from '../../assets/MutedVolumeIcon'
 
 export const VolumeSlider = ({
-  currentVolume,
+  currentAudio,
   handleVolumeUpdate,
   defaultVolumeValue,
 }: {
-  currentVolume: number
+  currentAudio: AudioData
   handleVolumeUpdate: (e: React.ChangeEvent<HTMLInputElement>) => void
   defaultVolumeValue: number
 }) => {
-  const [isMuted, setIsMuted] = useState(currentVolume <= 0.01)
+  const [isMuted, setIsMuted] = useState(currentAudio.audio.volume <= 0.01)
   const { mode } = useLightDarkMode()
   const volumeSlideRef = useRef<HTMLInputElement>(null)
 
@@ -23,6 +24,18 @@ export const VolumeSlider = ({
     const newValue = Number(e.target.value) / 100
     if (newValue <= 0.01) setIsMuted(true)
     else setIsMuted(false)
+  }
+
+  const toggleMuteVolume = () => {
+    if (!isMuted && currentAudio && volumeSlideRef.current) {
+      currentAudio.audio.volume = 0.01
+      volumeSlideRef.current.value = '0'
+      setIsMuted(true)
+    } else if (isMuted && currentAudio && volumeSlideRef.current) {
+      currentAudio.audio.volume = 0.5
+      volumeSlideRef.current.value = '50'
+      setIsMuted(false)
+    }
   }
 
   const handleThumbLeftSpaceColoring = () => {
@@ -66,14 +79,18 @@ export const VolumeSlider = ({
 
   return (
     <div className={styles.volumeSlider}>
-      <div
+      <button
+        onClick={() => {
+          toggleMuteVolume()
+          handleThumbLeftSpaceColoring()
+        }}
         className={clsx(styles.volumeIconContainer, {
           [styles.volumeIconContainerLightMode]: mode === MODE.LIGHT,
           [styles.volumeIconContainerDarkMode]: mode === MODE.DARK,
         })}
       >
         {isMuted ? <MutedVolumeIcon /> : <VolumeIcon />}
-      </div>
+      </button>
       <input
         ref={volumeSlideRef}
         className={clsx(styles.volumeSlider, {

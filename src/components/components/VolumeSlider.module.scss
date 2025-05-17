@@ -5,8 +5,11 @@
   gap: 1.2rem;
 
   .volumeIconContainer {
+    background-color: transparent;
+    border: none;
     display: flex;
     align-items: center;
+    cursor: pointer;
 
     svg {
       path {

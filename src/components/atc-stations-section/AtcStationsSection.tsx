@@ -30,7 +30,7 @@ export const AtcStationsSection = ({
           ATC Stations
         </h2>
         <VolumeSlider
-          currentVolume={currentAtc.audio.volume}
+          currentAudio={currentAtc}
           handleVolumeUpdate={handleAtcVolumeUpdate}
           defaultVolumeValue={currentAtc.audio.volume * 100}
         />

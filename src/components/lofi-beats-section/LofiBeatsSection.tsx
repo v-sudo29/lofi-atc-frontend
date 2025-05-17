@@ -83,7 +83,7 @@ export const LofiBeatsSection = ({
           Lofi Beats
         </h2>
         <VolumeSlider
-          currentVolume={currentSong.audio.volume}
+          currentAudio={currentSong}
           handleVolumeUpdate={handleLofiVolumeUpdate}
           defaultVolumeValue={currentSong.audio.volume * 100}
         />
