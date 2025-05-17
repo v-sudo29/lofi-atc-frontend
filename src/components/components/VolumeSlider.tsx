@@ -1,19 +1,29 @@
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { VolumeIcon } from '../../assets/VolumeIcon'
 import { useLightDarkMode } from '../../hooks/useLightDarkMode'
 import { MODE } from '../../constants/LightDarkMode'
 import styles from './VolumeSlider.module.scss'
 import clsx from 'clsx'
+import { MutedVolumeIcon } from '../../assets/MutedVolumeIcon'
 
 export const VolumeSlider = ({
+  currentVolume,
   handleVolumeUpdate,
   defaultVolumeValue,
 }: {
+  currentVolume: number
   handleVolumeUpdate: (e: React.ChangeEvent<HTMLInputElement>) => void
   defaultVolumeValue: number
 }) => {
+  const [isMuted, setIsMuted] = useState(currentVolume <= 0.01)
   const { mode } = useLightDarkMode()
   const volumeSlideRef = useRef<HTMLInputElement>(null)
+
+  const handleMuted = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = Number(e.target.value) / 100
+    if (newValue <= 0.01) setIsMuted(true)
+    else setIsMuted(false)
+  }
 
   const handleThumbLeftSpaceColoring = () => {
     if (volumeSlideRef.current) {
@@ -62,7 +72,7 @@ export const VolumeSlider = ({
           [styles.volumeIconContainerDarkMode]: mode === MODE.DARK,
         })}
       >
-        <VolumeIcon />
+        {isMuted ? <MutedVolumeIcon /> : <VolumeIcon />}
       </div>
       <input
         ref={volumeSlideRef}
@@ -76,6 +86,7 @@ export const VolumeSlider = ({
         onChange={(e) => {
           handleThumbLeftSpaceColoring()
           handleVolumeUpdate(e)
+          handleMuted(e)
         }}
       ></input>
     </div>
