@@ -115,7 +115,7 @@ function App() {
               [styles.titleDarkMode]: mode === MODE.DARK,
             })}
           >
-            comfyatc.fm
+            comfylofi
           </h1>
         </a>
         <div className={styles.kofiButtonContainer}>

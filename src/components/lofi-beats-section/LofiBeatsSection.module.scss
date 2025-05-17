@@ -49,8 +49,14 @@
         font-size: 1.3rem;
         transition: background-color 0.2s ease-out, border 0.2s ease-out;
 
-        .chevronDownIcon {
+        .chevronUpIcon {
           margin-left: auto;
+          display: inline-block;
+          transition: transform 0.2s ease-out;
+        }
+
+        .chevronFlipped {
+          transform: rotate(180deg);
         }
       }
 
@@ -60,6 +66,7 @@
 
       .lofiCustomSelectDarkMode {
         background-color: #303030;
+        border: 1px solid #4f4f4f;
         color: #eaebef;
 
         .musicIcon {
@@ -68,7 +75,7 @@
           }
         }
 
-        .chevronDownIcon {
+        .chevronUpIcon {
           path {
             stroke: #ffffff;
           }
@@ -147,7 +154,7 @@
 
     .dicesButtonDarkMode {
       background-color: #303030;
-      border: 1px solid #eaebef;
+      border: 1px solid #4f4f4f;
 
       svg {
         path {
