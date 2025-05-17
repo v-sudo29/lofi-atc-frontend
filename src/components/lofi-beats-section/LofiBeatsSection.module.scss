@@ -123,12 +123,16 @@
       border: 1px solid #eaebef;
       border-radius: 0.8rem;
       min-width: 4rem;
-      transition: background-color 0.2s ease-out;
+      transition: background-color 0.2s ease-out, border 0.2s ease-out;
+    }
+
+    .dicesButton:hover {
+      border: 1px solid #b3b2b2;
     }
 
     .dicesButtonDarkMode {
       background-color: #303030;
-      border: 1px solid #4f4f4f;
+      border: 1px solid #eaebef;
 
       svg {
         path {

@@ -13,12 +13,14 @@ import clsx from 'clsx'
 export const LofiBeatsSection = ({
   handleSongOptionClick,
   handleLofiVolumeUpdate,
+  handleRandomizeSong,
   lofiSongsData,
   currentSong,
   lofiDropdownRef,
 }: {
   handleSongOptionClick: (song: AudioData) => void
   handleLofiVolumeUpdate: (e: React.ChangeEvent<HTMLInputElement>) => void
+  handleRandomizeSong: () => void
   lofiSongsData: AudioData[]
   currentSong: AudioData
   lofiDropdownRef?: React.RefObject<HTMLSelectElement | null>
@@ -157,6 +159,7 @@ export const LofiBeatsSection = ({
           className={clsx(styles.dicesButton, {
             [styles.dicesButtonDarkMode]: mode === MODE.DARK,
           })}
+          onClick={handleRandomizeSong}
         >
           <DicesIcon />
         </button>

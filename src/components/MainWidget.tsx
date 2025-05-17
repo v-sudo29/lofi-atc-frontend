@@ -106,6 +106,13 @@ export const MainWidget = () => {
     if (newValue) currentAtc.audio.volume = newValue
   }
 
+  const handleRandomizeSong = () => {
+    const randomIndex = Math.round(
+      Number(Math.random()) * (lofiSongsData.length - 1)
+    )
+    setCurrentSong(lofiSongsData[randomIndex])
+  }
+
   return (
     <div
       className={clsx(styles.mainWidget, {
@@ -116,6 +123,7 @@ export const MainWidget = () => {
       <LofiBeatsSection
         handleSongOptionClick={handleSongOptionClick}
         handleLofiVolumeUpdate={handleLofiVolumeUpdate}
+        handleRandomizeSong={handleRandomizeSong}
         lofiSongsData={lofiSongsData}
         currentSong={currentSong}
         lofiDropdownRef={lofiDropdownRef}
