@@ -12,11 +12,13 @@ import clsx from 'clsx'
 
 export const LofiBeatsSection = ({
   handleSongOptionClick,
+  handleLofiVolumeUpdate,
   lofiSongsData,
   currentSong,
   lofiDropdownRef,
 }: {
   handleSongOptionClick: (song: AudioData) => void
+  handleLofiVolumeUpdate: (e: React.ChangeEvent<HTMLInputElement>) => void
   lofiSongsData: AudioData[]
   currentSong: AudioData
   lofiDropdownRef?: React.RefObject<HTMLSelectElement | null>
@@ -78,7 +80,10 @@ export const LofiBeatsSection = ({
         >
           Lofi Beats
         </h2>
-        <VolumeSlider />
+        <VolumeSlider
+          handleVolumeUpdate={handleLofiVolumeUpdate}
+          defaultVolumeValue={currentSong.audio.volume * 100}
+        />
       </div>
       <div className={styles.lofiDropdownSection}>
         <div className={styles.lofiDropdownContainer}>

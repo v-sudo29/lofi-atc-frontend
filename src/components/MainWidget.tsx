@@ -80,6 +80,11 @@ export const MainWidget = () => {
     setCurrentSong(song)
   }
 
+  const handleLofiVolumeUpdate = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const newValue = Number(e.target.value) / 100
+    if (newValue) currentSong.audio.volume = newValue
+  }
+
   return (
     <div
       className={clsx(styles.mainWidget, {
@@ -89,6 +94,7 @@ export const MainWidget = () => {
     >
       <LofiBeatsSection
         handleSongOptionClick={handleSongOptionClick}
+        handleLofiVolumeUpdate={handleLofiVolumeUpdate}
         lofiSongsData={lofiSongsData}
         currentSong={currentSong}
         lofiDropdownRef={lofiDropdownRef}

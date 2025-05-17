@@ -5,7 +5,13 @@ import { MODE } from '../../constants/LightDarkMode'
 import styles from './VolumeSlider.module.scss'
 import clsx from 'clsx'
 
-export const VolumeSlider = () => {
+export const VolumeSlider = ({
+  handleVolumeUpdate,
+  defaultVolumeValue,
+}: {
+  handleVolumeUpdate: (e: React.ChangeEvent<HTMLInputElement>) => void
+  defaultVolumeValue: number
+}) => {
   const { mode } = useLightDarkMode()
   const volumeSlideRef = useRef<HTMLInputElement>(null)
 
@@ -63,10 +69,14 @@ export const VolumeSlider = () => {
         className={clsx(styles.volumeSlider, {
           [styles.volumeSliderDarkMode]: mode === MODE.DARK,
         })}
+        defaultValue={defaultVolumeValue}
         type='range'
         min='1'
         max='100'
-        onChange={handleThumbLeftSpaceColoring}
+        onChange={(e) => {
+          handleThumbLeftSpaceColoring()
+          handleVolumeUpdate(e)
+        }}
       ></input>
     </div>
   )
