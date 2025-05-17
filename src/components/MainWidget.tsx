@@ -82,7 +82,7 @@ export const MainWidget = () => {
       <LofiBeatsSection
         handleSongOptionClick={handleSongOptionClick}
         lofiSongsData={lofiSongsData}
-        currentSong={currentSong.name}
+        currentSong={currentSong}
         lofiDropdownRef={lofiDropdownRef}
       />
       <AtcStationsSection />

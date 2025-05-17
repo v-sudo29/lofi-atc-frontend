@@ -6,6 +6,7 @@ import { VolumeSlider } from '../components/VolumeSlider'
 import { useLightDarkMode } from '../../hooks/useLightDarkMode'
 import { MODE } from '../../constants/LightDarkMode'
 import { AudioData } from '../MainWidget'
+import { BlackCheckmark } from '../../assets/BlackCheckmark'
 import styles from './LofiBeatsSection.module.scss'
 import clsx from 'clsx'
 
@@ -17,7 +18,7 @@ export const LofiBeatsSection = ({
 }: {
   handleSongOptionClick: (song: AudioData) => void
   lofiSongsData: AudioData[]
-  currentSong: string | null
+  currentSong: AudioData
   lofiDropdownRef?: React.RefObject<HTMLSelectElement | null>
 }) => {
   const [isOptionsDisplayed, setIsOptionsDisplayed] = useState(false)
@@ -106,7 +107,7 @@ export const LofiBeatsSection = ({
             onClick={handleCustomSelectClick}
           >
             <MusicIcon className={styles.musicIcon} />
-            {currentSong}
+            {currentSong.name}
             <ChevronDownIcon className={styles.chevronDownIcon} />
           </div>
           {isOptionsDisplayed && (
@@ -127,10 +128,20 @@ export const LofiBeatsSection = ({
                 return (
                   <div
                     key={`custom-option-${song.name}-${i}`}
-                    className={styles.songOption}
-                    onClick={() => handleSongOptionClick(song)}
+                    className={clsx(styles.songOption, {
+                      [styles.activeSongOption]: currentSong.name === song.name,
+                    })}
+                    onClick={
+                      currentSong.name !== song.name
+                        ? () => {
+                            handleSongOptionClick(song)
+                            setIsOptionsDisplayed(false)
+                          }
+                        : undefined
+                    }
                   >
                     {song.name}
+                    {currentSong.name === song.name && <BlackCheckmark />}
                   </div>
                 )
               })}

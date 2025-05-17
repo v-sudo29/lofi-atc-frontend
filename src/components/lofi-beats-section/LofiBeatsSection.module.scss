@@ -37,6 +37,7 @@
       }
 
       .lofiCustomSelect {
+        cursor: default;
         display: flex;
         align-items: center;
         gap: 1.2rem;
@@ -46,11 +47,15 @@
         padding: 0.95rem 1rem;
         font-family: 'Space Mono', 'monospace';
         font-size: 1.3rem;
-        transition: background-color 0.2s ease-out;
+        transition: background-color 0.2s ease-out, border 0.2s ease-out;
 
         .chevronDownIcon {
           margin-left: auto;
         }
+      }
+
+      .lofiCustomSelect:hover {
+        border: 1px solid #b3b2b2;
       }
 
       .lofiCustomSelectDarkMode {
@@ -71,6 +76,7 @@
       }
 
       .lofiOptionsContainer {
+        cursor: default;
         position: absolute;
         margin-top: 0.8rem;
         background-color: #fafafa;
@@ -81,11 +87,28 @@
         gap: 0.8rem;
         padding: 1rem;
         transition: background-color 0.2s ease-out;
+        outline: none;
 
         .songOption {
+          border-radius: 0.6rem;
           font-family: 'Space Mono', 'monospace';
           font-size: 1.3rem;
           padding: 0.6rem 1rem;
+          transition: background-color 0.2s ease-out;
+        }
+
+        .songOption:hover {
+          background-color: #e6e6e6;
+        }
+
+        .activeSongOption {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+        }
+
+        .activeSongOption:hover {
+          background-color: transparent;
         }
       }
 
