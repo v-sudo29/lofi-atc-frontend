@@ -1,28 +1,22 @@
+import { useEffect, useRef, useState } from 'react'
 import { MusicIcon } from '../../assets/MusicIcon'
 import { ChevronDownIcon } from '../../assets/ChevronDownIcon'
 import { DicesIcon } from '../../assets/DicesIcon'
 import { VolumeSlider } from '../components/VolumeSlider'
 import { useLightDarkMode } from '../../hooks/useLightDarkMode'
 import { MODE } from '../../constants/LightDarkMode'
+import { AudioData } from '../MainWidget'
 import styles from './LofiBeatsSection.module.scss'
 import clsx from 'clsx'
-import { useEffect, useRef, useState } from 'react'
-
-const fakeSongTitles = [
-  { name: 'Song title' },
-  { name: 'Song title' },
-  { name: 'Song title' },
-  { name: 'Song title' },
-  { name: 'Song title' },
-  { name: 'Song title' },
-  { name: 'Song title' },
-  { name: 'Song title' },
-]
 
 export const LofiBeatsSection = ({
+  handleSongOptionClick,
+  lofiSongsData,
   currentSong,
   lofiDropdownRef,
 }: {
+  handleSongOptionClick: (song: AudioData) => void
+  lofiSongsData: AudioData[]
   currentSong: string | null
   lofiDropdownRef?: React.RefObject<HTMLSelectElement | null>
 }) => {
@@ -93,10 +87,16 @@ export const LofiBeatsSection = ({
             name='lofi-beats-dropdown'
             id='lofi-beats-dropdown'
           >
-            <option value='bento box love letters'>
-              bento box love letters
-            </option>
-            <option value='Song title'>Song title</option>
+            {lofiSongsData.map((song, i) => {
+              return (
+                <option
+                  key={`master-option-${song.name}-${i}`}
+                  value={song.name}
+                >
+                  {song.name}
+                </option>
+              )
+            })}
           </select>
           <div
             ref={customSelectRef}
@@ -123,11 +123,12 @@ export const LofiBeatsSection = ({
               onBlur={handleOutsideOptionsContainerClick}
               tabIndex={0}
             >
-              {fakeSongTitles.map((song, i) => {
+              {lofiSongsData.map((song, i) => {
                 return (
                   <div
-                    key={`${song.name}-${i}`}
+                    key={`custom-option-${song.name}-${i}`}
                     className={styles.songOption}
+                    onClick={() => handleSongOptionClick(song)}
                   >
                     {song.name}
                   </div>

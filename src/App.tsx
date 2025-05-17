@@ -5,7 +5,7 @@ import { LightDarkModeToggle } from './components/LightDarkModeToggle'
 import { useLightDarkMode } from './hooks/useLightDarkMode'
 import { MODE } from './constants/LightDarkMode'
 import atcRecording from './assets/atc-trimmed.mp3'
-import lofiAudioOne from './assets/bento-box-love-letters.mp3'
+import lofiAudioOne from './assets/lofiAudio/bento-box-love-letters.mp3'
 import clsx from 'clsx'
 import styles from './App.module.scss'
 
