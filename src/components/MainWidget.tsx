@@ -129,14 +129,40 @@ export const MainWidget = () => {
     setCurrentSong(lofiSongsData[nextSongIndex])
   }
 
+  const handlePlayNextAtc = () => {
+    let nextAtcIndex = 0
+    const lastIndex = atcAudioData.length - 1
+
+    atcAudioData.find((audio, i) => {
+      if (audio === currentAtc && i !== lastIndex) {
+        nextAtcIndex = i + 1
+      }
+      if (audio === currentAtc && i === lastIndex) {
+        nextAtcIndex = 0
+      }
+    })
+    atcAudioData[nextAtcIndex].audio.play()
+    setCurrentAtc(atcAudioData[nextAtcIndex])
+  }
+
   // Event listener for when current song ends
   useEffect(() => {
     if (currentSong) {
       currentSong.audio.addEventListener('ended', handlePlayNextSong)
+
       return () =>
         currentSong.audio.removeEventListener('end', handlePlayNextSong)
     }
   }, [currentSong])
+
+  // Event listener for when atc audio ends
+  useEffect(() => {
+    if (currentAtc) {
+      currentAtc.audio.addEventListener('ended', handlePlayNextAtc)
+
+      return () => currentAtc.audio.addEventListener('ended', handlePlayNextAtc)
+    }
+  }, [currentAtc])
 
   return (
     <div
