@@ -138,6 +138,9 @@ export const LofiBeatsSection = ({
                     key={`custom-option-${song.name}-${i}`}
                     className={clsx(styles.songOption, {
                       [styles.activeSongOption]: currentSong.name === song.name,
+                      [styles.activeSongOptionDarkMode]:
+                        currentSong.name === song.name && mode === MODE.DARK,
+                      [styles.songOptionDarkMode]: mode === MODE.DARK,
                     })}
                     onClick={
                       currentSong.name !== song.name

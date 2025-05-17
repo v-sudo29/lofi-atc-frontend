@@ -101,6 +101,10 @@
           background-color: #e6e6e6;
         }
 
+        .songOptionDarkMode:hover {
+          background-color: #383838;
+        }
+
         .activeSongOption {
           display: flex;
           align-items: center;
@@ -109,6 +113,14 @@
 
         .activeSongOption:hover {
           background-color: transparent;
+        }
+
+        .activeSongOptionDarkMode {
+          svg {
+            path {
+              stroke: #ffffff;
+            }
+          }
         }
       }
 
