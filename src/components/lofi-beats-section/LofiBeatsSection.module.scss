@@ -74,6 +74,9 @@
           }
         }
       }
+      .lofiCustomSelectNoPointerEvents {
+        pointer-events: none;
+      }
 
       .lofiOptionsContainer {
         cursor: default;

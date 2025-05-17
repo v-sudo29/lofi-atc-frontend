@@ -111,6 +111,7 @@ export const LofiBeatsSection = ({
             ref={customSelectRef}
             className={clsx(styles.lofiCustomSelect, {
               [styles.lofiCustomSelectDarkMode]: mode === MODE.DARK,
+              [styles.lofiCustomSelectNoPointerEvents]: isOptionsDisplayed,
             })}
             onClick={handleCustomSelectClick}
           >
