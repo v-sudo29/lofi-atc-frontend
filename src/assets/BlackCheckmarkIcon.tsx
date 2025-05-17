@@ -1,4 +1,4 @@
-export const BlackCheckmark = () => {
+export const BlackCheckmarkIcon = () => {
   return (
     <svg
       width='14'
@@ -10,9 +10,9 @@ export const BlackCheckmark = () => {
       <path
         d='M11.6663 4L5.24967 10.4167L2.33301 7.5'
         stroke='black'
-        stroke-width='1.5'
-        stroke-linecap='round'
-        stroke-linejoin='round'
+        strokeWidth='1.5'
+        strokeLinecap='round'
+        strokeLinejoin='round'
       />
     </svg>
   )

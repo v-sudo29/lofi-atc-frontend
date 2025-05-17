@@ -6,7 +6,7 @@ import { VolumeSlider } from '../components/VolumeSlider'
 import { useLightDarkMode } from '../../hooks/useLightDarkMode'
 import { MODE } from '../../constants/LightDarkMode'
 import { AudioData } from '../MainWidget'
-import { BlackCheckmark } from '../../assets/BlackCheckmark'
+import { BlackCheckmarkIcon } from '../../assets/BlackCheckmarkIcon'
 import styles from './LofiBeatsSection.module.scss'
 import clsx from 'clsx'
 
@@ -141,7 +141,7 @@ export const LofiBeatsSection = ({
                     }
                   >
                     {song.name}
-                    {currentSong.name === song.name && <BlackCheckmark />}
+                    {currentSong.name === song.name && <BlackCheckmarkIcon />}
                   </div>
                 )
               })}

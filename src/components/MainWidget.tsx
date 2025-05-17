@@ -45,6 +45,7 @@ const atcAudioData: AudioData[] = [
 ]
 
 export const MainWidget = () => {
+  const [isAudioPlaying, setIsAudioPlaying] = useState(false)
   const [currentSong, setCurrentSong] = useState<AudioData>(lofiSongsData[0])
   const { mode } = useLightDarkMode()
 
@@ -59,6 +60,13 @@ export const MainWidget = () => {
   const handlePlayLofiAndAtc = () => {
     handlePlayLofi()
     handlePlayAtc()
+    setIsAudioPlaying(true)
+  }
+
+  const handlePauseLofiAndAtc = () => {
+    handlePauseLofi()
+    handlePauseAtc()
+    setIsAudioPlaying(false)
   }
 
   const handleSongOptionClick = (song: AudioData) => {
@@ -86,7 +94,11 @@ export const MainWidget = () => {
         lofiDropdownRef={lofiDropdownRef}
       />
       <AtcStationsSection />
-      <PlayButton handlePlayLofiAndAtc={handlePlayLofiAndAtc} />
+      <PlayButton
+        handlePlayLofiAndAtc={handlePlayLofiAndAtc}
+        handlePauseLofiAndAtc={handlePauseLofiAndAtc}
+        isAudioPlaying={isAudioPlaying}
+      />
     </div>
   )
 }
