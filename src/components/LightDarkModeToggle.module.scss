@@ -16,6 +16,23 @@
     transition: background-color 0.2s ease-out;
   }
 
+  .darkModeButton {
+    svg {
+      path {
+        stroke: #6c6b6b;
+        transition: stroke 0.2s ease-out;
+      }
+    }
+  }
+
+  .darkModeButton:hover {
+    svg {
+      path {
+        stroke: #000000;
+      }
+    }
+  }
+
   .lightButtonLightActive {
     background-color: #e6e6e6;
   }
@@ -24,6 +41,15 @@
     svg {
       path {
         stroke: #8d8d8d;
+        transition: stroke 0.2s ease-out;
+      }
+    }
+  }
+
+  .lightButtonDarkActive:hover {
+    svg {
+      path {
+        stroke: #ffffff;
       }
     }
   }
@@ -32,6 +58,14 @@
     background-color: #595959;
     color: #ffffff;
 
+    svg {
+      path {
+        stroke: #ffffff;
+      }
+    }
+  }
+
+  .darkButtonDarkActive:hover {
     svg {
       path {
         stroke: #ffffff;
