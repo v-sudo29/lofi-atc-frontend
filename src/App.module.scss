@@ -51,6 +51,24 @@
           width: 4rem;
           height: 3.3rem;
         }
+
+        .desktopKofiIconContainer {
+          display: none;
+        }
+
+        @media screen and (min-width: 600px) {
+          .mobileKofiIconContainer {
+            display: none;
+          }
+
+          .desktopKofiIconContainer {
+            display: block;
+
+            img {
+              height: 4rem;
+            }
+          }
+        }
       }
     }
   }

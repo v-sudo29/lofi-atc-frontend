@@ -3,6 +3,7 @@ import { MainWidget } from './components/MainWidget'
 import { LightDarkModeToggle } from './components/LightDarkModeToggle'
 import { useLightDarkMode } from './hooks/useLightDarkMode'
 import { MODE } from './constants/LightDarkMode'
+import KofiDesktopImage from './assets/images/support_me_on_kofi_dark.png'
 import clsx from 'clsx'
 import styles from './App.module.scss'
 
@@ -40,7 +41,12 @@ function App() {
             target='_blank'
             rel='noopener noreferrer'
           >
-            <KofiIcon />
+            <span className={styles.mobileKofiIconContainer}>
+              <KofiIcon />
+            </span>
+            <span className={styles.desktopKofiIconContainer}>
+              <img src={KofiDesktopImage} />
+            </span>
           </a>
         </div>
       </header>
