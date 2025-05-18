@@ -10,6 +10,7 @@ import styles from './App.module.scss'
 function App() {
   const { mode } = useLightDarkMode()
   console.log(import.meta.env.PROD)
+  console.log(import.meta.env.PRD)
   return (
     <div
       className={clsx(styles.layout, {

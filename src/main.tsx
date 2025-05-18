@@ -6,7 +6,9 @@ import LightDarkModeProvider from './contexts/lightDarkModeContext.tsx'
 import { PostHogProvider } from 'posthog-js/react'
 
 const options = {
-  api_host: import.meta.env.PRD ? import.meta.env.VITE_PUBLIC_POSTHOG_HOST : '',
+  api_host: import.meta.env.PROD
+    ? import.meta.env.VITE_PUBLIC_POSTHOG_HOST
+    : '',
 }
 console.log({ options })
 console.log(import.meta.env.VITE_PUBLIC_POSTHOG_HOST)
@@ -14,7 +16,7 @@ createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <PostHogProvider
       apiKey={
-        import.meta.env.PRD ? import.meta.env.VITE_PUBLIC_POSTHOG_KEY : ''
+        import.meta.env.PROD ? import.meta.env.VITE_PUBLIC_POSTHOG_KEY : ''
       }
       options={options}
     >
