@@ -8,7 +8,8 @@ import { PostHogProvider } from 'posthog-js/react'
 const options = {
   api_host: import.meta.env.PRD ? import.meta.env.VITE_PUBLIC_POSTHOG_HOST : '',
 }
-
+console.log({ options })
+console.log(import.meta.env.VITE_PUBLIC_POSTHOG_HOST)
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <PostHogProvider
