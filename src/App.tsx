@@ -9,15 +9,6 @@ import styles from './App.module.scss'
 
 function App() {
   const { mode } = useLightDarkMode()
-  console.log('import.meta.env.PROD', import.meta.env.PROD)
-  console.log(
-    'vite public posthog host: ',
-    import.meta.env.VITE_PUBLIC_POSTHOG_HOST
-  )
-  console.log(
-    'vite public posthog key: ',
-    import.meta.env.VITE_PUBLIC_POSTHOG_KEY
-  )
   return (
     <div
       className={clsx(styles.layout, {
