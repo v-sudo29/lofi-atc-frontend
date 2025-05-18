@@ -45,7 +45,10 @@ function App() {
               <KofiIcon />
             </span>
             <span className={styles.desktopKofiIconContainer}>
-              <img src={KofiDesktopImage} />
+              <img
+                src={KofiDesktopImage}
+                alt=''
+              />
             </span>
           </a>
         </div>
