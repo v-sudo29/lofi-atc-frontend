@@ -27,18 +27,21 @@ function App() {
               [styles.titleDarkMode]: mode === MODE.DARK,
             })}
           >
-            comfylofi
+            comfy lofi
           </h1>
         </a>
         <div className={styles.kofiButtonContainer}>
-          <button
+          <a
             className={clsx(styles.kofiButton, {
               [styles.kofiButtonLightMode]: mode === MODE.LIGHT,
               [styles.kofiButtonDarkMode]: mode === MODE.DARK,
             })}
+            href='https://ko-fi.com/milkandcode'
+            target='_blank'
+            rel='noopener noreferrer'
           >
             <KofiIcon />
-          </button>
+          </a>
         </div>
       </header>
       <main className={styles.main}>
