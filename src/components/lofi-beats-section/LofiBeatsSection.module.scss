@@ -27,7 +27,8 @@
     gap: 0.8rem;
 
     .lofiDropdownContainer {
-      width: 100%;
+      flex: 1;
+      min-width: 0;
 
       .lofiBeatsDropdown {
         appearance: none;
@@ -49,7 +50,14 @@
         font-size: 1.3rem;
         transition: background-color 0.2s ease-out, border 0.2s ease-out;
 
-        .chevronUpIcon {
+        .currentSongText {
+          display: block;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+        }
+
+        .chevronDownIcon {
           margin-left: auto;
           display: inline-block;
           transition: transform 0.2s ease-out;
@@ -75,7 +83,8 @@
           }
         }
 
-        .chevronUpIcon {
+        .chevronDownIcon {
+          min-width: 1.6rem;
           path {
             stroke: #ffffff;
           }

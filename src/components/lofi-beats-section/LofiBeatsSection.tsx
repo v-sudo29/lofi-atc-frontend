@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 import { MusicIcon } from '../../assets/MusicIcon'
-import { ChevronUpIcon } from '../../assets/ChevronUpIcon'
+import { ChevronDownIcon } from '../../assets/ChevronDownIcon'
 import { DicesIcon } from '../../assets/DicesIcon'
 import { VolumeSlider } from '../components/VolumeSlider'
 import { useLightDarkMode } from '../../hooks/useLightDarkMode'
@@ -116,9 +116,9 @@ export const LofiBeatsSection = ({
             onClick={handleCustomSelectClick}
           >
             <MusicIcon className={styles.musicIcon} />
-            {currentSong.name}
-            <ChevronUpIcon
-              className={clsx(styles.chevronUpIcon, {
+            <span className={styles.currentSongText}>{currentSong.name}</span>
+            <ChevronDownIcon
+              className={clsx(styles.chevronDownIcon, {
                 [styles.chevronFlipped]: isOptionsDisplayed,
               })}
             />

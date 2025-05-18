@@ -1,4 +1,4 @@
-export const ChevronUpIcon = ({ className }: { className?: string }) => {
+export const ChevronDownIcon = ({ className }: { className?: string }) => {
   return (
     <svg
       className={className}
@@ -9,7 +9,7 @@ export const ChevronUpIcon = ({ className }: { className?: string }) => {
       xmlns='http://www.w3.org/2000/svg'
     >
       <path
-        d='M12 10L8 6L4 10'
+        d='M12 6L8 10L4 6'
         stroke='black'
         strokeWidth='1.5'
         strokeLinecap='round'
