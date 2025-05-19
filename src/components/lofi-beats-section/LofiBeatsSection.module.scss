@@ -107,6 +107,8 @@
         padding: 1rem;
         transition: background-color 0.2s ease-out;
         outline: none;
+        max-height: 28.5rem;
+        overflow-y: scroll;
 
         .songOption {
           border-radius: 0.6rem;

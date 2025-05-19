@@ -10,6 +10,13 @@ import lofiPixelSkiesAudio from '../assets/lofiAudio/pixel-skies.mp3'
 import lofiNightTimeAudio from '../assets/lofiAudio/night-time-blue-light.mp3'
 import lofiSunsetRooftopAudio from '../assets/lofiAudio/sunset-on-the-rooftop.mp3'
 import lofiThinkingOfYouAudio from '../assets/lofiAudio/thinking-of-you-wherever-you-are.mp3'
+import lofiHaveANiceNightAudio from '../assets/lofiAudio/have-a-nice-night.mp3'
+import lofiConvenientStoreAudio from '../assets/lofiAudio/late-night-convenient-store-runs.mp3'
+import lofiSleepless7thAve from '../assets/lofiAudio/sleepless-on-7th-ave.mp3'
+import lofiPinkClouds from '../assets/lofiAudio/pink-clouds-in-the-rearview.mp3'
+import lofiCoffeeMidnightAudio from '../assets/lofiAudio/coffee-at-midnight.mp3'
+import lofiCobblestoneAudio from '../assets/lofiAudio/cobblestone-reverie.mp3'
+import lofiMoonlightAudio from '../assets/lofiAudio/moonlight-in-the-keep.mp3'
 import atcBosAudio from '../assets/atcAudio/May-18-2025-BOS.mp3'
 import atcSfoAudio from '../assets/atcAudio/May-18-2025-SFO.mp3'
 import atcLaxAudio from '../assets/atcAudio/May-18-2025-LAX.mp3'
@@ -36,6 +43,25 @@ const lofiSongsData: AudioData[] = [
     name: 'thinking of you wherever you are',
     audio: new Audio(lofiThinkingOfYouAudio),
   },
+  { name: 'have a nice night', audio: new Audio(lofiHaveANiceNightAudio) },
+  {
+    name: 'late night convenient store runs',
+    audio: new Audio(lofiConvenientStoreAudio),
+  },
+  {
+    name: 'sleepless on 7th ave',
+    audio: new Audio(lofiSleepless7thAve),
+  },
+  {
+    name: 'pink clouds in the rearview',
+    audio: new Audio(lofiPinkClouds),
+  },
+  {
+    name: 'coffee at midnight',
+    audio: new Audio(lofiCoffeeMidnightAudio),
+  },
+  { name: 'cobblestone reverie', audio: new Audio(lofiCobblestoneAudio) },
+  { name: 'moonlight in the keep', audio: new Audio(lofiMoonlightAudio) },
 ]
 
 const atcAudioData: AudioData[] = [
