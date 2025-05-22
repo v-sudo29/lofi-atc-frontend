@@ -28,7 +28,7 @@ export const VolumeSlider = ({
 
   const toggleMuteVolume = () => {
     if (!isMuted && currentAudio && volumeSlideRef.current) {
-      currentAudio.audio.volume = 0.01
+      currentAudio.audio.volume = 0
       volumeSlideRef.current.value = '0'
       setIsMuted(true)
     } else if (isMuted && currentAudio && volumeSlideRef.current) {
