@@ -4,6 +4,7 @@ import { MODE } from '../../constants/LightDarkMode'
 import { AudioData } from '../MainWidget'
 import styles from './AtcStationsSection.module.scss'
 import clsx from 'clsx'
+import { ChevronDownIcon } from '../../assets/ChevronDownIcon'
 
 export const AtcStationsSection = ({
   handleAtcVolumeUpdate,
@@ -17,18 +18,28 @@ export const AtcStationsSection = ({
   currentAtc: AudioData
 }) => {
   const { mode } = useLightDarkMode()
-
+  const toggleAmbienceCategoriesContainer = () => {
+    console.log('clicked!')
+  }
   return (
     <div className={styles.section}>
       <div className={styles.header}>
-        <h2
-          className={clsx({
-            [styles.titleLightMode]: mode === MODE.LIGHT,
-            [styles.titleDarkMode]: mode === MODE.DARK,
-          })}
-        >
-          ATC Stations
-        </h2>
+        <div className={styles.headerAndToggleContainer}>
+          <h2
+            className={clsx({
+              [styles.titleLightMode]: mode === MODE.LIGHT,
+              [styles.titleDarkMode]: mode === MODE.DARK,
+            })}
+          >
+            ATC Stations
+          </h2>
+          <button
+            onClick={toggleAmbienceCategoriesContainer}
+            className={styles.ambiencesContainerToggle}
+          >
+            <ChevronDownIcon />
+          </button>
+        </div>
         <VolumeSlider
           currentAudio={currentAtc}
           handleVolumeUpdate={handleAtcVolumeUpdate}

@@ -7,18 +7,35 @@
     display: flex;
     justify-content: space-between;
 
-    h2 {
-      font-family: 'Poppins', 'serif';
-      font-size: 1.6rem;
-      font-weight: 600;
-    }
+    .headerAndToggleContainer {
+      display: flex;
+      gap: 0.8rem;
 
-    .titleLightMode {
-      color: #000000;
-    }
+      h2 {
+        font-family: 'Poppins', 'serif';
+        font-size: 1.6rem;
+        font-weight: 600;
+      }
 
-    .titleDarkMode {
-      color: #eaebef;
+      .ambiencesContainerToggle {
+        align-items: center;
+        background-color: #fafafa;
+        border: 1px solid #eaebef;
+        border-radius: 10rem;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        margin-right: auto;
+        width: 2.4rem;
+      }
+
+      .titleLightMode {
+        color: #000000;
+      }
+
+      .titleDarkMode {
+        color: #eaebef;
+      }
     }
   }
 
