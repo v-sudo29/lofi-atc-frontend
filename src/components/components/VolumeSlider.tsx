@@ -12,11 +12,13 @@ export const VolumeSlider = ({
   handleVolumeUpdate,
   defaultVolumeValue,
 }: {
-  currentAudio: AudioData
+  currentAudio: AudioData | null
   handleVolumeUpdate: (e: React.ChangeEvent<HTMLInputElement>) => void
-  defaultVolumeValue: number
+  defaultVolumeValue: number | null
 }) => {
-  const [isMuted, setIsMuted] = useState(currentAudio.audio.volume <= 0.01)
+  const [isMuted, setIsMuted] = useState(
+    currentAudio ? currentAudio.audio.volume <= 0.01 : false
+  )
   const { mode } = useLightDarkMode()
   const volumeSlideRef = useRef<HTMLInputElement>(null)
 
@@ -96,7 +98,7 @@ export const VolumeSlider = ({
         className={clsx(styles.volumeSlider, {
           [styles.volumeSliderDarkMode]: mode === MODE.DARK,
         })}
-        defaultValue={defaultVolumeValue}
+        defaultValue={defaultVolumeValue ?? 100}
         type='range'
         min='1'
         max='100'

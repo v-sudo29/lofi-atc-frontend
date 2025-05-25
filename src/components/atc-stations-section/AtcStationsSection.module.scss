@@ -27,6 +27,30 @@
         justify-content: center;
         margin-right: auto;
         width: 2.4rem;
+
+        .chevronDownIcon {
+          transition: transform 0.2s ease-out;
+        }
+
+        .chevronFlipped {
+          transform: rotate(180deg);
+        }
+      }
+
+      .ambiencesContainerToggleDarkMode {
+        background-color: #303030;
+        border: 1px solid #4f4f4f;
+        transition: border 0.2s ease-out;
+
+        .chevronDownIcon {
+          path {
+            stroke: #ffffff;
+          }
+        }
+
+        &:hover {
+          border: 1px solid #eaebef;
+        }
       }
 
       .titleLightMode {
@@ -39,11 +63,60 @@
     }
   }
 
+  .ambienceCategoriesContainer {
+    display: flex;
+    gap: 1.4rem;
+    overflow: hidden;
+    overflow-x: scroll;
+    scroll-snap-type: x;
+
+    button {
+      scroll-snap-align: center;
+      position: relative;
+      color: #ffffff;
+      cursor: pointer;
+      border: none;
+      border-radius: 0.8rem;
+      font-family: 'Space Mono', 'monospace';
+      font-size: 1.5rem;
+      flex: 1;
+      min-height: 8rem;
+      min-width: 19.6rem;
+      overflow: hidden;
+
+      span {
+        position: relative;
+        z-index: 1;
+      }
+
+      img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 0;
+        transform: scale(1.2);
+      }
+
+      .currentIconContainer {
+        position: absolute;
+        display: flex;
+        right: 0;
+        bottom: 0;
+        padding: 0.8rem;
+        width: max-content;
+      }
+    }
+  }
+
   .stationButtonsContainer {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(7.3rem, 1fr));
-    gap: 1.4rem;
+    gap: 1.6rem;
     justify-content: space-between;
+
+    @media screen and (min-width: 600px) {
+      grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+    }
 
     .stationButton {
       background-color: #fafafa;
@@ -52,9 +125,16 @@
       border-radius: 0.8rem;
       min-height: 0;
       min-height: 7.3rem;
+      min-width: 7.3rem;
       font-family: 'Space Mono', 'monospace';
       font-size: 1.3rem;
+      text-align: center;
       transition: border 0.2s ease-out;
+
+      @media screen and (min-width: 600px) {
+        min-height: 8rem;
+        min-width: 9rem;
+      }
     }
 
     .stationButton:hover {

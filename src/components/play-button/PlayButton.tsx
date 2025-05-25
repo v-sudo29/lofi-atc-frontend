@@ -3,18 +3,20 @@ import { PauseIcon } from '../../assets/PauseIcon'
 import styles from './PlayButton.module.scss'
 
 export const PlayButton = ({
-  handlePlayLofiAndAtc,
-  handlePauseLofiAndAtc,
+  handlePlayLofiAndAmbience,
+  handlePauseLofiAndAmbience,
   isAudioPlaying,
 }: {
-  handlePlayLofiAndAtc: () => void
-  handlePauseLofiAndAtc: () => void
+  handlePlayLofiAndAmbience: () => void
+  handlePauseLofiAndAmbience: () => void
   isAudioPlaying: boolean
 }) => {
   return (
     <button
       className={styles.button}
-      onClick={isAudioPlaying ? handlePauseLofiAndAtc : handlePlayLofiAndAtc}
+      onClick={
+        isAudioPlaying ? handlePauseLofiAndAmbience : handlePlayLofiAndAmbience
+      }
     >
       {isAudioPlaying ? (
         <>

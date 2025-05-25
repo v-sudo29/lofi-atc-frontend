@@ -1,26 +1,41 @@
-import { VolumeSlider } from '../components/VolumeSlider'
+import { useState } from 'react'
 import { useLightDarkMode } from '../../hooks/useLightDarkMode'
+import { VolumeSlider } from '../components/VolumeSlider'
 import { MODE } from '../../constants/LightDarkMode'
-import { AudioData } from '../MainWidget'
+import { AmbienceCategoryData, AudioData } from '../MainWidget'
+import { ChevronDownIcon } from '../../assets/ChevronDownIcon'
 import styles from './AtcStationsSection.module.scss'
 import clsx from 'clsx'
-import { ChevronDownIcon } from '../../assets/ChevronDownIcon'
+import { FilledCheckIcon } from '../../assets/FilledCheckIcon'
 
 export const AtcStationsSection = ({
-  handleAtcVolumeUpdate,
-  handleAtcOptionClick,
-  atcAudioData,
-  currentAtc,
+  handleAmbienceVolumeUpdate,
+  handleAmbienceOptionClick,
+  ambienceCategoriesData,
+  currentAmbience,
+  currentAmbienceCategory,
+  setAmbienceCategory,
 }: {
-  handleAtcVolumeUpdate: (e: React.ChangeEvent<HTMLInputElement>) => void
-  handleAtcOptionClick: (atcStation: AudioData) => void
-  atcAudioData: AudioData[]
-  currentAtc: AudioData
+  handleAmbienceVolumeUpdate: (e: React.ChangeEvent<HTMLInputElement>) => void
+  handleAmbienceOptionClick: (atcStation: AudioData) => void
+  ambienceCategoriesData: AmbienceCategoryData[]
+  currentAmbience: AudioData | null
+  currentAmbienceCategory: AmbienceCategoryData
+  setAmbienceCategory: React.Dispatch<
+    React.SetStateAction<AmbienceCategoryData>
+  >
 }) => {
   const { mode } = useLightDarkMode()
+  const [isCategoriesVisible, setIsCategoriesVisible] = useState(true)
   const toggleAmbienceCategoriesContainer = () => {
-    console.log('clicked!')
+    setIsCategoriesVisible(!isCategoriesVisible)
   }
+  const handleSwitchCategory = (categoryData: AmbienceCategoryData) => {
+    if (currentAmbienceCategory?.name !== categoryData.name) {
+      setAmbienceCategory(categoryData)
+    }
+  }
+  console.log({ currentAmbienceCategory })
   return (
     <div className={styles.section}>
       <div className={styles.header}>
@@ -31,33 +46,65 @@ export const AtcStationsSection = ({
               [styles.titleDarkMode]: mode === MODE.DARK,
             })}
           >
-            ATC Stations
+            {currentAmbienceCategory.name}
           </h2>
           <button
             onClick={toggleAmbienceCategoriesContainer}
-            className={styles.ambiencesContainerToggle}
+            className={clsx(styles.ambiencesContainerToggle, {
+              [styles.ambiencesContainerToggleDarkMode]: mode === MODE.DARK,
+            })}
           >
-            <ChevronDownIcon />
+            <ChevronDownIcon
+              className={clsx(styles.chevronDownIcon, {
+                [styles.chevronFlipped]: isCategoriesVisible,
+              })}
+            />
           </button>
         </div>
         <VolumeSlider
-          currentAudio={currentAtc}
-          handleVolumeUpdate={handleAtcVolumeUpdate}
-          defaultVolumeValue={currentAtc.audio.volume * 100}
+          currentAudio={currentAmbience}
+          handleVolumeUpdate={handleAmbienceVolumeUpdate}
+          defaultVolumeValue={
+            currentAmbience ? currentAmbience.audio.volume * 100 : null
+          }
         />
       </div>
+      {isCategoriesVisible && (
+        <div className={styles.ambienceCategoriesContainer}>
+          {ambienceCategoriesData.map((category, i) => {
+            return (
+              <button
+                key={`${category.name}-${i}`}
+                className={styles.ambienceCategoryButton}
+                onClick={() => handleSwitchCategory(category)}
+              >
+                <span>{category.name}</span>
+                <img
+                  src={category.imgSrc}
+                  alt=''
+                />
+                {category.name === currentAmbienceCategory.name && (
+                  <span className={styles.currentIconContainer}>
+                    <FilledCheckIcon />
+                  </span>
+                )}
+              </button>
+            )
+          })}
+        </div>
+      )}
       <div className={styles.stationButtonsContainer}>
-        {atcAudioData.map((station, i) => (
+        {currentAmbienceCategory?.allAudio?.map((station, i) => (
           <button
             key={`${station.name}-${i}`}
             className={clsx(styles.stationButton, {
               [styles.stationButtonDarkMode]: mode === MODE.DARK,
               [styles.activeButtonLightMode]:
-                station.name === currentAtc.name && mode === MODE.LIGHT,
+                station.name === currentAmbience?.name && mode === MODE.LIGHT,
               [styles.activeButtonDarkMode]:
-                station.name === currentAtc.name && mode === MODE.DARK,
+                station.name === currentAmbience?.name && mode === MODE.DARK,
             })}
-            onClick={() => handleAtcOptionClick(station)}
+            onClick={() => handleAmbienceOptionClick(station)}
           >
             {station.name}
           </button>

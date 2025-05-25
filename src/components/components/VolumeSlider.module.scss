@@ -31,8 +31,12 @@
     border-radius: 0.8rem;
     height: 1.8rem;
     width: 100%;
-    max-width: 15rem;
+    max-width: 12.4rem;
     outline: none;
+
+    @media screen and (min-width: 600px) {
+      max-width: 15rem;
+    }
   }
 
   .volumeSlider::-webkit-slider-thumb {
