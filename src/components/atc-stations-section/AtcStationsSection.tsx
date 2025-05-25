@@ -35,7 +35,7 @@ export const AtcStationsSection = ({
       setAmbienceCategory(categoryData)
     }
   }
-  console.log({ currentAmbienceCategory })
+
   return (
     <div className={styles.section}>
       <div className={styles.header}>
